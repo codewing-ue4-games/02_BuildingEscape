@@ -14,6 +14,12 @@ class BUILDINGESCAPE_API UOpenDoor : public UActorComponent
 private:
 	AActor* Owner;
 
+	UPROPERTY(VisibleAnywhere)
+	float OpenAngle = 60.f;
+
+	UPROPERTY(EditAnywhere)
+	ATriggerVolume* PressurePlate;
+
 public:	
 	// Sets default values for this component's properties
 	UOpenDoor();
