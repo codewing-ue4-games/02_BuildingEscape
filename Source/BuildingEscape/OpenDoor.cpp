@@ -28,7 +28,8 @@ void UOpenDoor::BeginPlay()
 void UOpenDoor::SetDoorOpen(bool open) {
 	FRotator NewRotation;
 	if (open) {
-		NewRotation = FRotator(.0f, 90.0f, .0f);
+		NewRotation = FRotator(.0f, OpenAngle, .0f);
+		DoorOpenedTime = GetWorld()->GetTimeSeconds();
 	} else {
 		NewRotation = FRotator(.0f, 0.0f, .0f);
 	}
@@ -43,7 +44,9 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 
 	if (PressurePlate->IsOverlappingActor(ActorThatOpens)) {
 		SetDoorOpen(true);
-	} else {
+	}
+
+	if (DoorOpenedTime + DoorCloseDelay < GetWorld()->GetTimeSeconds()) {
 		SetDoorOpen(false);
 	}
 }

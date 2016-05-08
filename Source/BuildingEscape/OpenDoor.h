@@ -15,7 +15,12 @@ private:
 	AActor* Owner;
 
 	UPROPERTY(VisibleAnywhere)
-	float OpenAngle = 60.f;
+	float OpenAngle = 90.f;
+
+	UPROPERTY(VisibleAnywhere)
+	float DoorCloseDelay = 0.6f;
+	
+	float DoorOpenedTime = 0.0f;
 
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* PressurePlate;
