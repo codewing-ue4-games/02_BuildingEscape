@@ -48,6 +48,9 @@ void UGrabber::ReleaseGrab() {
 }
 
 void UGrabber::Grab() {
+
+	if (!PhysicsHandle) {return;}
+
 	if (IsGrabbing) {
 		ReleaseGrab();
 	} else {
@@ -70,6 +73,8 @@ void UGrabber::SetupInputComponent() {
 void UGrabber::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
+
+	if (!PhysicsHandle) {return;}
 
 	if (PhysicsHandle->GrabbedComponent) {
 		FVector PlayerLocation;

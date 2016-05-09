@@ -23,7 +23,7 @@ private:
 	float DoorOpenedTime = 0.0f;
 
 	UPROPERTY(EditAnywhere)
-	ATriggerVolume* PressurePlate;
+	ATriggerVolume* PressurePlate = nullptr;
 
 	float TriggerMass = 25.0f;
 
