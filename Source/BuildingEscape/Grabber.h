@@ -23,7 +23,8 @@ public:
 
 
 private:
-	float Reach = 100.f;
+	float Reach = 150.f;
+	bool IsGrabbing = false;
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 	UInputComponent* InputComp = nullptr;
 
@@ -32,7 +33,9 @@ private:
 
 	void ExecuteGrab();
 	void ReleaseGrab();
+	void Grab();
 	
 	FHitResult GetFirstPhysicsBodyInReach();
+	void GetTraceStartAndEnd(FVector &Start, FVector &End);
 
 };
