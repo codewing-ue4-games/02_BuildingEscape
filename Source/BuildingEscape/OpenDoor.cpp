@@ -31,12 +31,13 @@ void UOpenDoor::BeginPlay()
 void UOpenDoor::SetDoorOpen(bool open) {
 	FRotator NewRotation;
 	if (open) {
-		NewRotation = FRotator(.0f, OpenAngle, .0f);
+		//NewRotation = FRotator(.0f, OpenAngle, .0f);
 		DoorOpenedTime = GetWorld()->GetTimeSeconds();
+		OnOpenRequest.Broadcast();
 	} else {
 		NewRotation = FRotator(.0f, 0.0f, .0f);
+		Owner->SetActorRotation(NewRotation);
 	}
-	Owner->SetActorRotation(NewRotation);
 }
 
 
