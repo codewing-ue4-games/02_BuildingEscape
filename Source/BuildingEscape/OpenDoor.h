@@ -25,7 +25,9 @@ private:
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* PressurePlate;
 
-	AActor* ActorThatOpens;
+	float TriggerMass = 25.0f;
+
+	float GetTotalMassOfObjectsInTrigger();
 
 public:	
 	// Sets default values for this component's properties
