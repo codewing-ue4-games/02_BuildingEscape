@@ -60,4 +60,8 @@ Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
-Content/StarterContent/
+
+
+Content/StarterContent/Maps
+Content/StarterContent/HDRI
+Content/StarterContent/Textures
