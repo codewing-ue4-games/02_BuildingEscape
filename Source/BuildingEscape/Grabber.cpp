@@ -17,13 +17,35 @@ UGrabber::UGrabber()
 	// ...
 }
 
+void UGrabber::ExecuteGrab() {
+	UE_LOG(LogTemp, Warning, TEXT("Grabbing..."))
+}
+
+void UGrabber::ReleaseGrab() {
+	UE_LOG(LogTemp, Warning, TEXT("Releasing..."))
+}
+
 
 // Called when the game starts
 void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
+	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
+	InputComp = GetOwner()->FindComponentByClass<UInputComponent>();
+
+	if (PhysicsHandle) {
+
+	} else {
+		UE_LOG(LogTemp, Error, TEXT("%s: No Physics Handle attached"), *GetOwner()->GetName());
+	}
+
+	if (InputComp) {
+		InputComp->BindAction("Grab", IE_Pressed, this, &UGrabber::ExecuteGrab);
+		InputComp->BindAction("Grab", IE_Released, this, &UGrabber::ReleaseGrab);
+	} else {
+		UE_LOG(LogTemp, Error, TEXT("%s: No InputComponent attached"), *GetOwner()->GetName());
+	}
 	
 }
 
