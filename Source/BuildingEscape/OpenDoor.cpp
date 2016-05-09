@@ -22,6 +22,10 @@ void UOpenDoor::BeginPlay()
 	Super::BeginPlay();
 
 	Owner = GetOwner();
+
+	if (!PressurePlate) {
+		UE_LOG(LogTemp, Error, TEXT("PressurePlate not specified!"));
+	}
 }
 
 void UOpenDoor::SetDoorOpen(bool open) {

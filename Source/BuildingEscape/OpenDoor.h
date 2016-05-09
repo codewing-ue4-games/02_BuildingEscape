@@ -12,7 +12,7 @@ class BUILDINGESCAPE_API UOpenDoor : public UActorComponent
 	GENERATED_BODY()
 
 private:
-	AActor* Owner;
+	AActor* Owner = nullptr;
 
 	UPROPERTY(VisibleAnywhere)
 	float OpenAngle = 90.f;
