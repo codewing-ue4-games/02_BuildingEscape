@@ -53,6 +53,8 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
 
+	if (!PressurePlate) { return; }
+
 	if (GetTotalMassOfObjectsInTrigger() > TriggerMass) {
 		SetDoorOpen(true);
 	}
