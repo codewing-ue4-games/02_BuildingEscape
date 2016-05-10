@@ -28,18 +28,6 @@ void UOpenDoor::BeginPlay()
 	}
 }
 
-void UOpenDoor::SetDoorOpen(bool open) {
-	FRotator NewRotation;
-	if (open) {
-		//NewRotation = FRotator(.0f, OpenAngle, .0f);
-		DoorOpenedTime = GetWorld()->GetTimeSeconds();
-		OnOpenRequest.Broadcast();
-	} else {
-		NewRotation = FRotator(.0f, 0.0f, .0f);
-		Owner->SetActorRotation(NewRotation);
-	}
-}
-
 
 float UOpenDoor::GetTotalMassOfObjectsInTrigger() {
 	float TotalMass = 0.f;
@@ -61,11 +49,9 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	if (!PressurePlate) { return; }
 
 	if (GetTotalMassOfObjectsInTrigger() > TriggerMass) {
-		SetDoorOpen(true);
-	}
-
-	if (DoorOpenedTime + DoorCloseDelay < GetWorld()->GetTimeSeconds()) {
-		SetDoorOpen(false);
+		OnOpenRequest.Broadcast();
+	} else {
+		OnCloseRequest.Broadcast();
 	}
 }
 
