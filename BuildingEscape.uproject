@@ -12,5 +12,16 @@
 				"Engine"
 			]
 		}
+	],
+	"Plugins": [
+		{
+			"Name": "SteamController",
+			"Enabled": true
+		},
+		{
+			"Name": "LogitechG",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/offers/168a361cd05943358dff438115c5d1c2"
+		}
 	]
 }

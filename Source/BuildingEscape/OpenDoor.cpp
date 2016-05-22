@@ -12,7 +12,6 @@ UOpenDoor::UOpenDoor()
 	bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 
-	// ...
 }
 
 
